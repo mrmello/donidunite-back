@@ -1,0 +1,32 @@
+{
+  "name": "donidunite-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrmello/donidunite-back.git"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "node js",
+    "mongoDB",
+    "mongoose"
+  ],
+  "author": "Marcos Mello",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrmello/donidunite-back/issues"
+  },
+  "homepage": "https://github.com/mrmello/donidunite-back#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.11"
+  }
+}
