@@ -8,7 +8,7 @@ const PaymentSchema = new Schema({
 PaymentSchema
 .virtual('url')
 .get(function () {
-  return '/managment/payment/' + this._id;
+  return '/management/payment/' + this._id;
 });
 
 mongoose.model('Payment', PaymentSchema);

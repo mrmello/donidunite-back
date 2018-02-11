@@ -21,7 +21,7 @@ const OrderSchema = new Schema({
 OrderSchema
 .virtual('url')
 .get(function () {
-  return '/managment/order/' + this._id;
+  return '/management/order/' + this._id;
 });
 
 mongoose.model('Order', OrderSchema);

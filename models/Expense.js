@@ -12,7 +12,7 @@ const ExpenseSchema = new Schema({
 ExpenseSchema
 .virtual('url')
 .get(function () {
-  return '/managment/expense/' + this._id;
+  return '/management/expense/' + this._id;
 });
 
 mongoose.model('Expense', ExpenseSchema);

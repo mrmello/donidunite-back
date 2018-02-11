@@ -12,7 +12,7 @@ const IncomeSchema = new Schema({
 IncomeSchema
 .virtual('url')
 .get(function () {
-  return '/managment/income/' + this._id;
+  return '/management/income/' + this._id;
 });
 
 mongoose.model('Income', IncomeSchema);
