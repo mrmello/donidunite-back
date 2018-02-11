@@ -2,13 +2,23 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
-require('./models/Product');
 const app = express()
+require('./models/Product');
+require('./models/Admin');
+require('./models/Category');
+require('./models/Client');
+require('./models/Expense');
+require('./models/Income');
+require('./models/Order');
+require('./models/Payment');
 
 mongoose.connect(keys.mongoURI)
-  .catch(err => {console.log('cannot connect ' + err)});
+  .catch(err => {console.error('cannot connect ' + err)});
 
-const Product = mongoose.model('products');
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+const Product = mongoose.model('Product');
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
