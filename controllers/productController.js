@@ -1,7 +1,12 @@
-var Product = require('../models/product');
+const mongoose = require('mongoose');
+require('../models/product');
+
+const Product = mongoose.model('Product');
 
 exports.product_list = function(req, res) {
-    res.send('NOT IMPLEMENTED: product list');
+  Product.find()
+    .then(resp => {res.send(resp)})
+    .catch(err => {res.send(err)});
 };
 
 exports.product_detail = function(req, res) {
