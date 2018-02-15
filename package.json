@@ -8,7 +8,8 @@
     "url": "git+https://github.com/mrmello/donidunite-back.git"
   },
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "test": "mocha ./test/index.test.js"
   },
   "keywords": [
     "node js",
@@ -23,7 +24,10 @@
   "homepage": "https://github.com/mrmello/donidunite-back#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
     "express": "^4.16.2",
+    "mocha": "^5.0.1",
     "mongoose": "^5.0.1"
   },
   "devDependencies": {
