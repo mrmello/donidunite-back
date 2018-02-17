@@ -1,5 +1,4 @@
-var express = require('express');
-var router = express.Router();
+var router = require('express').Router();
 
 var expense_controller = require('../controllers/expenseController');
 var income_controller = require('../controllers/incomeController');

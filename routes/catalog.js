@@ -1,5 +1,4 @@
-var express = require('express');
-var router = express.Router();
+var router = require('express').Router();
 
 var product_controller = require('../controllers/productController');
 var category_controller = require('../controllers/categoryController');

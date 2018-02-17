@@ -6,6 +6,7 @@ const app = express();
 var catalog = require('./routes/catalog');
 var users = require('./routes/users');
 var management = require('./routes/management');
+var auth = require('./routes/auth');
 
 mongoose.connect(keys.mongoURI)
   .catch(err => {console.error('cannot connect ' + err)});
@@ -15,6 +16,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use('/auth', auth);
 app.use('/management', management);
 app.use('/users', users);
 app.use('/catalog', catalog);
