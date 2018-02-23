@@ -15,20 +15,20 @@ describe('Admin', function() {
       })
   });
 
-  it('should create an admin', function(done) {
-    chai.request('http://localhost:3100')
-      .post('/users/admin/create')
-      .send({
-        user: 'mrmello',
-        password: 'mrm241192',
-        name: 'Marcos Mello',
-      })
-      .end((err, res) => {
-         expect(err).to.be.null;
-         expect(res).to.have.status(200);
-         done();
-      })
-  });
+  // it('should create an admin', function(done) {
+  //   chai.request('http://localhost:3100')
+  //     .post('/users/admin/create')
+  //     .send({
+  //       user: 'mrmello',
+  //       password: 'mrm241192',
+  //       name: 'Marcos Mello',
+  //     })
+  //     .end((err, res) => {
+  //        expect(err).to.be.null;
+  //        expect(res).to.have.status(200);
+  //        done();
+  //     })
+  // });
   //
   // it('should delete a category', function(done) {
   //   chai.request('http://localhost:3100')
