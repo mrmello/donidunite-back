@@ -19,9 +19,8 @@ describe('Orders', function() {
     chai.request('http://localhost:3100')
       .post('/management/order/create')
       .send({
-        totalValue:         9.8,
         customer:           '5a90b71465c38f239cf58ffb',
-        product:            '5a8846114dcd55255cdb1211',
+        product:            ['5a8846114dcd55255cdb1211','5a883aedc4362621c46f6fb6']
       })
       .end((err, res) => {
          expect(err).to.be.null;

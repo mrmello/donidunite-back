@@ -15,14 +15,20 @@ exports.order_detail = function(req, res) {
 };
 
 exports.order_create = function(req, res) {
-  var order = new Order({
-    totalValue:   req.body.totalValue,
-    customer:     req.body.customer,
-    product:      req.body.product
-  });
-  order.save()
-    .then(resp => { res.send(resp) })
-    .catch(err => { res.send(err) });
+  calculateTotalValue(req.body.product)
+    .then((totalValue) => {
+      var order = new Order({
+        totalValue:   req.body.totalValue,
+        customer:     req.body.customer,
+        product:      req.body.product
+      });
+      order.save()
+        .then(resp => { res.send(resp) })
+        .catch(err => { res.send(err) });
+    })
+    .catch((err) => {
+
+    })
 };
 
 exports.order_delete = function(req, res) {
@@ -32,3 +38,11 @@ exports.order_delete = function(req, res) {
 exports.order_update = function(req, res) {
     res.send('NOT IMPLEMENTED: order update POST');
 };
+
+function calculateTotalValue(data) {
+  return new Promise((resolve, reject) => {
+    data.map((product) => {
+      
+    })
+  })
+}

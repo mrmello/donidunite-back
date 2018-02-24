@@ -14,7 +14,7 @@ const OrderSchema = new Schema({
     state:            {type: String},
     code:             {type: String}
   },
-  product:            {type: Schema.ObjectId, ref: 'Product'},
+  product:            [{type: Schema.ObjectId, ref: 'Product'}],
   paid:               {type: Boolean}
 });
 
