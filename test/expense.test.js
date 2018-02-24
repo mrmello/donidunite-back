@@ -25,22 +25,22 @@ describe('Expenses', function() {
   //     })
   // });
 
-  it('should create an expense', function(done) {
-    chai.request('http://localhost:3100')
-      .post('/management/expense/create')
-      .send({
-        description:  'Compra de embalagens',
-        value:        25,
-        category:     '5a877e4e779f12214031bf5f',
-        payment:      'Dinheiro',
-        payee:        '5a8889d4badd32125c327691',
-      })
-      .end((err, res) => {
-         expect(err).to.be.null;
-         expect(res).to.have.status(200);
-         done();
-      })
-  });
+  // it('should create an expense', function(done) {
+  //   chai.request('http://localhost:3100')
+  //     .post('/management/expense/create')
+  //     .send({
+  //       description:  'Compra de embalagens',
+  //       value:        25,
+  //       category:     '5a877e4e779f12214031bf5f',
+  //       payment:      'Dinheiro',
+  //       payee:        '5a8889d4badd32125c327691',
+  //     })
+  //     .end((err, res) => {
+  //        expect(err).to.be.null;
+  //        expect(res).to.have.status(200);
+  //        done();
+  //     })
+  // });
   // it('should delete a donut', function(done) {
   //   chai.request('http://localhost:3100')
   //     .delete('/catalog/product/5a88475927630914f4c1ea95')

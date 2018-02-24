@@ -25,23 +25,23 @@ describe('Income', function() {
   //     })
   // });
 
-  it('should create an income', function(done) {
-    chai.request('http://localhost:3100')
-      .post('/management/income/create')
-      .send({
-        description:  'Depósito',
-        value:        100,
-        category:     '5a8f7712fafcd414d85b9f4c',
-        payment:      'Dinheiro',
-        payee:        '5a8889d4badd32125c327691',
-      })
-      .end((err, res) => {
-        console.log(res);
-         expect(err).to.be.null;
-         expect(res).to.have.status(200);
-         done();
-      })
-  });
+  // it('should create an income', function(done) {
+  //   chai.request('http://localhost:3100')
+  //     .post('/management/income/create')
+  //     .send({
+  //       description:  'Depósito',
+  //       value:        100,
+  //       category:     '5a8f7712fafcd414d85b9f4c',
+  //       payment:      'Dinheiro',
+  //       payee:        '5a8889d4badd32125c327691',
+  //     })
+  //     .end((err, res) => {
+  //       console.log(res);
+  //        expect(err).to.be.null;
+  //        expect(res).to.have.status(200);
+  //        done();
+  //     })
+  // });
   // it('should delete a donut', function(done) {
   //   chai.request('http://localhost:3100')
   //     .delete('/catalog/product/5a88475927630914f4c1ea95')
