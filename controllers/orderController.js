@@ -1,6 +1,8 @@
 require('../models/order');
+require('../models/products');
 const mongoose = require('mongoose');
 const Order = mongoose.model('Order');
+const Product = mongoose.model('Products');
 
 exports.order_list = function(req, res) {
   Order.find()
@@ -15,10 +17,10 @@ exports.order_detail = function(req, res) {
 };
 
 exports.order_create = function(req, res) {
-  calculateTotalValue(req.body.product)
+  calculateTotalValue(req.body.shoppingCart)
     .then((totalValue) => {
       var order = new Order({
-        totalValue:   req.body.totalValue,
+        totalValue:   totalValue,
         customer:     req.body.customer,
         product:      req.body.product
       });
@@ -27,7 +29,8 @@ exports.order_create = function(req, res) {
         .catch(err => { res.send(err) });
     })
     .catch((err) => {
-
+      .then(resp => { res.send(resp) })
+      .catch(err => { res.send(err) });
     })
 };
 
@@ -39,10 +42,20 @@ exports.order_update = function(req, res) {
     res.send('NOT IMPLEMENTED: order update POST');
 };
 
-function calculateTotalValue(data) {
+function calculateTotalValue(shoppingCart) {
   return new Promise((resolve, reject) => {
-    data.map((product) => {
-      
+    // loop through a object containing a product and its quantity
+    //pull of the product from the database and multiply its value by the quantity
+    // then increment the total value and return it
+    var totalValue = 0;
+    shoppingCart.map((product) => {
+      Product.findOne({_id: product.id})
+        .then((donut) => {
+          totalValue += donut.price * product.quantity;
+        }).catch((err) => {
+          reject(err);
+        })
     })
+    resolve(totalValue);
   })
 }
