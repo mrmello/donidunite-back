@@ -1,13 +1,13 @@
 require('../models/order');
-require('../models/products');
+require('../models/product');
 const mongoose = require('mongoose');
 const Order = mongoose.model('Order');
-const Product = mongoose.model('Products');
+const Product = mongoose.model('Product');
 
 exports.order_list = function(req, res) {
   Order.find()
   .populate('customer')
-  .populate('product')
+  .populate('shoppingCart.product')
     .then(resp => {res.send(resp)})
     .catch(err => {res.send(err)});
 };
@@ -20,17 +20,16 @@ exports.order_create = function(req, res) {
   calculateTotalValue(req.body.shoppingCart)
     .then((totalValue) => {
       var order = new Order({
-        totalValue:   totalValue,
-        customer:     req.body.customer,
-        product:      req.body.product
+        totalValue:     totalValue,
+        customer:       req.body.customer,
+        shoppingCart:   req.body.shoppingCart
       });
       order.save()
         .then(resp => { res.send(resp) })
         .catch(err => { res.send(err) });
     })
     .catch((err) => {
-      .then(resp => { res.send(resp) })
-      .catch(err => { res.send(err) });
+       res.send(err);
     })
 };
 
@@ -44,18 +43,18 @@ exports.order_update = function(req, res) {
 
 function calculateTotalValue(shoppingCart) {
   return new Promise((resolve, reject) => {
-    // loop through a object containing a product and its quantity
-    //pull of the product from the database and multiply its value by the quantity
-    // then increment the total value and return it
-    var totalValue = 0;
-    shoppingCart.map((product) => {
-      Product.findOne({_id: product.id})
+    var totalValue = count = 0;
+    shoppingCart.map((item) => {
+      Product.findOne({_id: item.product})
         .then((donut) => {
-          totalValue += donut.price * product.quantity;
+          totalValue += donut.price * item.quantity;
+          count += 1;
+          if(count === shoppingCart.length) {
+            resolve(totalValue.toFixed(2));
+          }
         }).catch((err) => {
           reject(err);
         })
     })
-    resolve(totalValue);
   })
 }

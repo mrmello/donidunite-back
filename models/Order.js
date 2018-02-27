@@ -14,8 +14,11 @@ const OrderSchema = new Schema({
     state:                {type: String},
     code:                 {type: String}
   },
-  product:            [{type: Schema.ObjectId, ref: 'Product'}],
-  paid:               {type: Boolean}
+  shoppingCart: [{
+              product:     {type: Schema.ObjectId, ref: 'Product'},
+              quantity:    {type: Number, required: true}
+            }],
+  paid:           {type: Boolean}
 });
 
 OrderSchema
