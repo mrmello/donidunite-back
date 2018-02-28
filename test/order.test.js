@@ -22,13 +22,13 @@ describe('Orders', function() {
         customer:       '5a90b71465c38f239cf58ffb',
         shoppingCart:
               [
-                { 
+                {
                   product: '5a8846114dcd55255cdb1211',
-                  quantity: 2
+                  quantity: 5
                 },
                 {
                   product: '5a883aedc4362621c46f6fb6',
-                  quantity: 3
+                  quantity: 5
                 }
               ]
       })
@@ -38,16 +38,16 @@ describe('Orders', function() {
          done();
       })
   });
-  //
-  // it('should delete a category', function(done) {
-  //   chai.request('http://localhost:3100')
-  //     .delete('/catalog/category/5a877d469a053f1298a0cde1')
-  //     .end((err, res) => {
-  //        expect(err).to.be.null;
-  //        expect(res).to.have.status(200);
-  //        done();
-  //     })
-  // });
+
+  it('should delete a order', function(done) {
+    chai.request('http://localhost:3100')
+      .delete('/management/order/5a94ae5f4cf13f14987a4ec5')
+      .end((err, res) => {
+         expect(err).to.be.null;
+         expect(res).to.have.status(200);
+         done();
+      })
+  });
 
   // it('should retrive the specified category', function(done) {
   //   chai.request('http://localhost:3100')

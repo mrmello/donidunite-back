@@ -34,7 +34,9 @@ exports.order_create = function(req, res) {
 };
 
 exports.order_delete = function(req, res) {
-    res.send('NOT IMPLEMENTED: order delete GET');
+  Order.remove({ _id: req.params.id })
+    .then(resp => { res.send(resp) })
+    .catch(err => { res.send(err) });
 };
 
 exports.order_update = function(req, res) {
