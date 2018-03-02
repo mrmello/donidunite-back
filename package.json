@@ -8,7 +8,8 @@
     "url": "git+https://github.com/mrmello/donidunite-back.git"
   },
   "scripts": {
-    "start": "nodemon index.js",
+    "devStart": "nodemon index.js",
+    "start": "node index.js",
     "test": "mocha ./test/**/*.test.js"
   },
   "keywords": [
