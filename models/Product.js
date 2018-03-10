@@ -6,6 +6,11 @@ const ProductSchema = new Schema({
   price:    {type: Number, required: true, min: 0},
   category: {type: Schema.ObjectId, ref: 'Category', required: true}
 });
+//tamanho
+//ativo
+//frito ou assado
+//recheio
+//adicionais
 
 ProductSchema
 .virtual('url')

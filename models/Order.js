@@ -20,7 +20,8 @@ const OrderSchema = new Schema({
             }],
   paid:           {type: Boolean}
 });
-
+// colocar status
+// contato obrigatorio
 OrderSchema
 .virtual('url')
 .get(function () {

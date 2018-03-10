@@ -9,7 +9,8 @@ const ExpenseSchema = new Schema({
   payee:        {type: Schema.ObjectId, ref: 'Admin'},
   date:         {type: Date, default: Date.now}
 });
-
+// payee selectable
+// to who
 ExpenseSchema
 .virtual('url')
 .get(function () {
@@ -17,3 +18,6 @@ ExpenseSchema
 });
 
 mongoose.model('Expense', ExpenseSchema);
+
+//donidunite@gmail.com
+//oleodearroz

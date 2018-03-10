@@ -9,7 +9,7 @@ const IncomeSchema = new Schema({
   payee:        {type: Schema.ObjectId, ref: 'Admin'},
   date:         {type: Date, default: Date.now}
 });
-
+// payee seletacble
 IncomeSchema
 .virtual('url')
 .get(function () {
