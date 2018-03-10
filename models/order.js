@@ -6,6 +6,7 @@ const OrderSchema = new Schema({
   date:               {type: Date, default: Date.now},
   deliveryDate:       {type: Date},
   customer:           {type: Schema.ObjectId, ref: 'Client'},
+  contact:            {type: Number, required: true},
   deliveryAddress: {
     street:               {type: String},
     number:               {type: String},
@@ -18,10 +19,10 @@ const OrderSchema = new Schema({
               product:     {type: Schema.ObjectId, ref: 'Product'},
               quantity:    {type: Number, required: true}
             }],
-  paid:           {type: Boolean}
+  paid:         {type: Boolean},
+  status:       {type: Schema.ObjectId, ref: 'Status', required: true},
 });
-// colocar status
-// contato obrigatorio
+
 OrderSchema
 .virtual('url')
 .get(function () {

@@ -8,6 +8,7 @@ exports.order_list = function(req, res) {
   Order.find()
   .populate('customer')
   .populate('shoppingCart.product')
+  .populate({path: 'shoppingCart.product', populate: {path: 'category'}} )
     .then(resp => {res.send(resp)})
     .catch(err => {res.send(err)});
 };
