@@ -6,10 +6,10 @@ const IncomeSchema = new Schema({
   value:        {type: Number, required: true},
   category:     {type: Schema.ObjectId, ref: 'Category', required: true},
   payment:      {type: String, required: true},
-  payee:        {type: Schema.ObjectId, ref: 'Admin'},
+  payee:        {type: String, required: true},
   date:         {type: Date, default: Date.now}
 });
-// payee seletacble
+
 IncomeSchema
 .virtual('url')
 .get(function () {

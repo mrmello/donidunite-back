@@ -6,11 +6,11 @@ const ExpenseSchema = new Schema({
   value:        {type: Number, required: true},
   category:     {type: Schema.ObjectId, ref: 'Category', required: true},
   payment:      {type: String, required: true},
-  payee:        {type: Schema.ObjectId, ref: 'Admin'},
-  date:         {type: Date, default: Date.now}
+  payee:        {type: String, required: true},
+  date:         {type: Date, default: Date.now},
+  toWho:        {type: String, required: true}
 });
-// payee selectable
-// to who
+
 ExpenseSchema
 .virtual('url')
 .get(function () {
