@@ -14,6 +14,12 @@ exports.category_detail = function(req, res) {
     .catch(err => { res.send(err) });
 };
 
+exports.category_byType = function(req, res) {
+  Category.find({type: req.params.type})
+    .then(resp => { res.send(resp) })
+    .catch(err => { res.send(err) });
+};
+
 exports.category_create = function(req, res) {
   var category = new Category({ type: req.body.type, name: req.body.name });
   category.save()

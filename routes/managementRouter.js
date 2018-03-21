@@ -3,7 +3,6 @@ var router = require('express').Router();
 var expense_controller = require('../controllers/expenseController');
 var income_controller = require('../controllers/incomeController');
 var order_controller = require('../controllers/orderController');
-var payment_controller = require('../controllers/paymentController');
 
 // Expense Routes //
 router.get('/expenses/', expense_controller.expense_list);
@@ -25,12 +24,5 @@ router.get('/order/:id', order_controller.order_detail);
 router.post('/order/create', order_controller.order_create);
 router.delete('/order/:id', order_controller.order_delete);
 router.put('/order/:id', order_controller.order_update);
-
-// Payment Routes //
-router.get('/payments/', payment_controller.payment_list);
-router.get('/payment/:id', payment_controller.payment_detail);
-router.post('/payment/create', payment_controller.payment_create);
-router.delete('/payment/:id', payment_controller.payment_delete);
-router.put('/payment/:id', payment_controller.payment_update);
 
 module.exports = router;

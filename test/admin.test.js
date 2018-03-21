@@ -1,14 +1,12 @@
-const chai = require('chai');
 const expect = require('chai').expect;
-const chaiHttp = require('chai-http');
+const App = require('../index');
+const request = require('supertest')(App)
 
-chai.use(chaiHttp);
 
 describe('Admin', function() {
 
   it('retrieves array admins', function(done) {
-    chai.request('http://localhost:3100')
-      .get('/users/admins')
+    request.get('/users/admins')
       .end((err, res) => {
         expect(res.body).to.be.an('array');
         done();

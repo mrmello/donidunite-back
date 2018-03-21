@@ -1,8 +1,6 @@
-const chai = require('chai');
 const expect = require('chai').expect;
-const chaiHttp = require('chai-http');
-
-chai.use(chaiHttp);
+const App = require('../index');
+const request = require('supertest')(App)
 
 describe('Category', function() {
 
@@ -46,15 +44,44 @@ describe('Category', function() {
   //     })
   // });
 
-  // it('should update the specified category', function(done) {
-  //   chai.request('http://localhost:3100')
-  //     .put('/catalog/category/5a877fd1f3e7981b2056cdd0')
-  //     .send({ type: 'produtos', name: 'Especiais' })
-  //     .end((err, res) => {
-  //        expect(err).to.be.null;
-  //        expect(res.body).to.deep.include({name: 'Especiais'});
-  //        done();
-  //     })
-  // });
+  it('should update the specified category', function(done) {
+    request.put('/category/5a877e4e779f12214031bf5f')
+      .send({ type: 'expense', name: 'Embalagens' })
+      .end((err, res) => {
+         expect(err).to.be.null;
+         expect(res.body).to.deep.include({name: 'Embalagens'});
+         done();
+      })
+  });
+
+  it('should update the specified category', function(done) {
+    request.put('/category/5a877f637e657205ec87f3e6')
+      .send({ type: 'expense', name: 'Ingredientes' })
+      .end((err, res) => {
+         expect(err).to.be.null;
+         expect(res.body).to.deep.include({name: 'Ingredientes'});
+         done();
+      })
+  });
+
+  it('should update the specified category', function(done) {
+    request.put('/category/5a8782f21f42a904b4ad7db4')
+      .send({ type: 'expense', name: 'Ingredientes' })
+      .end((err, res) => {
+         expect(err).to.be.null;
+         expect(res.body).to.deep.include({name: 'Ingredientes'});
+         done();
+      })
+  });
+
+  it('should update the specified category', function(done) {
+    request.put('/category/5a8f7712fafcd414d85b9f4c')
+      .send({ type: 'income', name: 'Depósito' })
+      .end((err, res) => {
+         expect(err).to.be.null;
+         expect(res.body).to.deep.include({name: 'Depósito'});
+         done();
+      })
+  });
 
 });

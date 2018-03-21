@@ -3,10 +3,11 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const app = express();
 const cors = require('cors')
-var catalog = require('./routes/catalog');
-var users = require('./routes/users');
-var management = require('./routes/management');
-var auth = require('./routes/auth');
+var catalogRouter = require('./routes/catalogRouter');
+var usersRouter = require('./routes/usersRouter');
+var managementRouter = require('./routes/managementRouter');
+var authRouter = require('./routes/authRouter');
+var categoryRouter = require('./routes/categoryRouter');
 
 const PORT = process.env.PORT || 3100;
 const MONGO_URI = process.env.MONGO_URI;
@@ -20,9 +21,12 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors())
-app.use('/auth', auth);
-app.use('/management', management);
-app.use('/users', users);
-app.use('/catalog', catalog);
+app.use('/auth', authRouter);
+app.use('/management', managementRouter);
+app.use('/users', usersRouter);
+app.use('/catalog', catalogRouter);
+app.use('/category', categoryRouter);
 
 app.listen(PORT);
+
+module.exports = app;
