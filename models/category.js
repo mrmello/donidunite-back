@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-/* 
+/*
 ### TYPES ###
   product
   size

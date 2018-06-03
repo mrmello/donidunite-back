@@ -5,7 +5,7 @@ const IncomeSchema = new Schema({
   description:  {type: String, required: true},
   value:        {type: Number, required: true},
   category:     {type: Schema.ObjectId, ref: 'Category', required: true},
-  payment:      {type: String, required: true},
+  payment:      {type: Schema.ObjectId, ref: 'Category', required: true},
   payee:        {type: String, required: true},
   date:         {type: Date, default: Date.now}
 });

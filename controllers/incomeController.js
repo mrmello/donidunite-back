@@ -5,7 +5,7 @@ const Income = mongoose.model('Income');
 exports.income_list = function(req, res) {
   Income.find()
     .populate('category')
-    .populate('payee')
+    .populate('payment')
     .then(resp => {res.send(resp)})
     .catch(err => {res.send(err)});
 };

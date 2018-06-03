@@ -10,7 +10,7 @@ var authRouter = require('./routes/authRouter');
 var categoryRouter = require('./routes/categoryRouter');
 
 const PORT = process.env.PORT || 3100;
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.MONGO_URI || "mongodb://root:donidunite123@ds125048.mlab.com:25048/donidunite";
 
 mongoose.connect(MONGO_URI)
   .catch(err => {console.error('cannot connect ' + err)});

@@ -1,6 +1,7 @@
 require('../models/category');
 const mongoose = require('mongoose');
 const Category = mongoose.model('Category');
+const { sendErrors } = require('./handleErrors')
 
 exports.category_list = function(req, res) {
   Category.find()
@@ -24,7 +25,7 @@ exports.category_create = function(req, res) {
   var category = new Category({ type: req.body.type, name: req.body.name });
   category.save()
     .then(resp => { res.send(resp) })
-    .catch(err => { res.send(err) });
+    .catch(err => ( sendErrors(res, err) ));
 };
 
 exports.category_delete = function(req, res) {

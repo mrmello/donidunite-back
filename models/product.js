@@ -5,8 +5,6 @@ const ProductSchema = new Schema({
   name:       {type: String, required: true, max: 100},
   price:      {type: Number, required: true, min: 0},
   category:   {type: Schema.ObjectId, ref: 'Category', required: true},
-  size:       {type: Schema.ObjectId, ref: 'Category', required: true},
-  dressing:   {type: Schema.ObjectId, ref: 'Category', required: true},
   active:     {type: Boolean, required: true}
 });
 
