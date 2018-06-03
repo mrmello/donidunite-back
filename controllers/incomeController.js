@@ -1,6 +1,7 @@
 require('../models/income');
 const mongoose = require('mongoose');
 const Income = mongoose.model('Income');
+const { sendErrors } = require('./handleErrors')
 
 exports.income_list = function(req, res) {
   Income.find()
@@ -25,7 +26,7 @@ exports.income_create = function(req, res) {
   });
   income.save()
     .then(resp => { res.send(resp) })
-    .catch(err => { res.send(err) });
+    .catch(err => ( sendErrors(res, err) ));
 };
 
 exports.income_delete = function(req, res) {

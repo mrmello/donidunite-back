@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 require('../models/expense');
+const { sendErrors } = require('./handleErrors')
 const Expense = mongoose.model('Expense');
 
 exports.expense_list = function(req, res) {
   Expense.find()
     .populate('category')
-    .populate('payee')
+    .populate('payment')
     .then(resp => {res.send(resp)})
     .catch(err => {res.send(err)});
 };
@@ -21,11 +22,12 @@ exports.expense_create = function(req, res) {
     category:     req.body.category,
     payment:      req.body.payment,
     payee:        req.body.payee,
-    date:         req.body.date
+    date:         req.body.date,
+    toWho:        req.body.toWho,
   });
   expense.save()
     .then(resp => { res.send(resp) })
-    .catch(err => { res.send(err) });
+    .catch(err => ( sendErrors(res, err) ));
 };
 
 exports.expense_delete = function(req, res) {

@@ -1,6 +1,6 @@
 require('../models/product');
 const mongoose = require('mongoose');
-
+const { sendErrors } = require('./handleErrors')
 const Product = mongoose.model('Product');
 
 exports.product_list = function(req, res) {
@@ -21,11 +21,12 @@ exports.product_create = function(req, res) {
   var donut = new Product({
     name: req.body.name,
     price: req.body.price,
-    category: req.body.category
+    category: req.body.category,
+    active:   true
   });
   donut.save()
     .then(resp => { res.send(resp) })
-    .catch(err => { res.send(err) });
+    .catch(err => ( sendErrors(res, err) ));
 };
 
 exports.product_delete = function(req, res) {
