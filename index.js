@@ -18,8 +18,8 @@ mongoose.connect(MONGO_URI)
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(bodyParser.json({limit: '50mb'}))
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(cors())
 app.use('/auth', authRouter);
 app.use('/management', managementRouter);
