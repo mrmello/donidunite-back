@@ -22,6 +22,7 @@ exports.product_create = function(req, res) {
     name: req.body.name,
     price: req.body.price,
     category: req.body.category,
+    images: req.body.images,
     active:   true
   });
   donut.save()
