@@ -42,7 +42,8 @@ exports.product_update = function(req, res) {
     donut.set({
       name: req.body.name,
       price: req.body.price,
-      category: req.body.category
+      category: req.body.category,
+      images: req.body.images
     })
     donut.save()
       .then(resp => { res.send(resp) })
