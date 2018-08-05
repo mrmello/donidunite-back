@@ -23,7 +23,7 @@ exports.product_create = function(req, res) {
     price: req.body.price,
     category: req.body.category,
     images: req.body.images,
-    active:   true
+    active: req.body.active
   });
   donut.save()
     .then(resp => { res.send(resp) })
@@ -43,7 +43,8 @@ exports.product_update = function(req, res) {
       name: req.body.name,
       price: req.body.price,
       category: req.body.category,
-      images: req.body.images
+      images: req.body.images,
+      active: req.body.active
     })
     donut.save()
       .then(resp => { res.send(resp) })
