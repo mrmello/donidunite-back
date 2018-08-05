@@ -33,7 +33,7 @@ exports.product_create = function(req, res) {
 exports.product_delete = function(req, res) {
   Product.remove({ _id: req.params.id })
     .then(resp => { res.send(resp) })
-    .catch(err => { res.send(err) });
+    .catch(err => ( sendErrors(res, err) ));
 };
 
 exports.product_update = function(req, res) {
@@ -47,9 +47,9 @@ exports.product_update = function(req, res) {
     })
     donut.save()
       .then(resp => { res.send(resp) })
-      .catch(err => { res.send(err) });
+      .catch(err => ( sendErrors(res, err) ));
   })
   .catch(err => {
-    res.send(err)
+    sendErrors(res, err)
   });
 };
